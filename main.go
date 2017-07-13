@@ -1,7 +1,14 @@
-package main
+package hello
 
-import "fmt"
+import (
+	"fmt"
+	"net/http"
+)
 
-func main() {
-	fmt.Println("Hello, World!")
+func init() {
+	http.HandleFunc("/", handler)
+}
+
+func handler(w http.ResponseWriter, r *http.Request) {
+	fmt.Fprint(w, "Hello, world!")
 }
